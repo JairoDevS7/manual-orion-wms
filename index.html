@@ -71,35 +71,20 @@
             padding-left: 10px;
         }
         ul { padding-left: 20px; }
-        li { margin-bottom: 14px; color: var(--text-light); }
+        li { margin-bottom: 18px; color: var(--text-light); }
         strong { color: var(--white); }
         
         .detail-box {
-            background: rgba(10, 25, 47, 0.5);
+            background: rgba(10, 25, 47, 0.7);
             border: 1px dashed var(--border);
-            padding: 12px 18px;
+            padding: 14px 18px;
             border-radius: 6px;
-            margin-top: 6px;
+            margin-top: 10px;
             font-size: 0.92rem;
-            color: var(--text-main);
+            color: var(--text-light);
         }
-
-        .img-link {
+        .detail-box b, .detail-box strong {
             color: var(--accent);
-            background: rgba(100, 255, 218, 0.1);
-            padding: 3px 8px;
-            border-radius: 4px;
-            border: 1px dashed var(--accent);
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            margin-left: 6px;
-            transition: background 0.2s;
-        }
-        .img-link:hover {
-            background: rgba(100, 255, 218, 0.25);
         }
 
         .img-grid {
@@ -124,129 +109,12 @@
             max-height: 280px;
             object-fit: contain;
             border: 1px solid #222;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .img-box img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 12px rgba(100, 255, 218, 0.4);
         }
         .img-caption {
             font-size: 0.8rem;
             color: var(--accent);
             margin-top: 8px;
             font-weight: 500;
-        }
-
-        #modal-lightbox {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(10, 25, 47, 0.96);
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            box-sizing: border-box;
-        }
-        .modal-container {
-            display: flex;
-            background-color: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            max-width: 1100px;
-            width: 100%;
-            max-height: 88vh;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-        }
-        .modal-left {
-            flex: 1.1;
-            background: #0A192F;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-right: 1px solid var(--border);
-        }
-        .modal-main-img-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-height: 55vh;
-            width: 100%;
-        }
-        .modal-left img#modal-img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 6px;
-            border: 1px solid var(--accent);
-            object-fit: contain;
-        }
-        .modal-thumbs {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            overflow-x: auto;
-            width: 100%;
-            padding-bottom: 5px;
-            justify-content: center;
-        }
-        .modal-thumb {
-            width: 60px;
-            height: 60px;
-            border-radius: 4px;
-            border: 2px solid var(--border);
-            cursor: pointer;
-            object-fit: cover;
-            transition: border-color 0.2s, transform 0.2s;
-        }
-        .modal-thumb:hover, .modal-thumb.active {
-            border-color: var(--accent);
-            transform: scale(1.05);
-        }
-
-        .modal-right {
-            flex: 1.3;
-            padding: 30px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        #modal-title {
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-weight: bold;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 10px;
-        }
-        #modal-desc {
-            color: var(--text-light);
-            font-size: 0.96rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .modal-close-btn {
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-            padding: 10px 24px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            align-self: flex-start;
-            transition: opacity 0.2s;
-        }
-        .modal-close-btn:hover {
-            opacity: 0.85;
         }
 
         footer {
@@ -258,7 +126,7 @@
             margin-top: 50px;
         }
 
-        /* CONFIGURACIÓN DE IMPRESIÓN IMPRESCINDIBLE PARA EL PDF */
+        /* CONFIGURACIÓN DE IMPRESIÓN PARA EXPORTACIÓN DIRECTA A PDF */
         @media print {
             body {
                 background-color: #0A192F !important;
@@ -266,12 +134,16 @@
                 print-color-adjust: exact !important;
                 padding: 10px;
             }
-            .img-link, #modal-lightbox, button, .no-print {
+            .no-print {
                 display: none !important;
             }
             .module-card {
                 page-break-inside: avoid;
                 margin-bottom: 20px;
+            }
+            .detail-box {
+                background: #0D1F38 !important;
+                border: 1px solid var(--border) !important;
             }
         }
     </style>
@@ -295,7 +167,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-        " onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        ">
             📥 Exportar Manual a PDF
         </button>
     </div>
@@ -311,43 +183,61 @@
         
         <div class="section-title">1.1 Arquitectura de Autenticación y Control de Roles</div>
         <ul>
-            <li><strong>Inicio de Sesión Seguro:</strong> El sistema restringe strictly el acceso operativo mediante credenciales encriptadas (correo corporativo y contraseña). Ningún usuario no autorizado puede ejecutar transacciones en piso. 
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Imagen_1.png'], ['Pantalla de Inicio de Sesión'], ['El módulo de autenticación valida las credenciales contra la base de datos central. Implementa sesiones seguras y control de tokens para garantizar que el operario mantenga su trazabilidad en cada movimiento.<br><br><b>Puntos clave:</b><br>• Validación obligatoria de correo corporativo.<br>• Encriptación de claves de acceso.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Propósito:</strong> Evitar accesos indebidos y asegurar que cada auditoría o alistamiento quede firmado digitalmente por el responsable.</div>
+            <li>
+                <strong>Inicio de Sesión Seguro:</strong> El sistema restringe estrictamente el acceso operativo mediante credenciales encriptadas (correo corporativo y contraseña). Ningún usuario no autorizado puede ejecutar transacciones en piso.
+                <div class="detail-box">
+                    <strong>Detalles y Guía Técnica:</strong> El módulo de autenticación valida las credenciales contra la base de datos central. Implementa sesiones seguras y control de tokens para garantizar que el operario mantenga su trazabilidad en cada movimiento.<br><br>
+                    <strong>Puntos clave:</strong><br>
+                    • Validación obligatoria de correo corporativo.<br>
+                    • Encriptación de claves de acceso.<br>
+                    • Propósito: Evitar accesos indebidos y asegurar que cada auditoría o alistamiento quede firmado digitalmente por el responsable.
+                </div>
             </li>
-            <li><strong>Dinámica de Roles, Permisos y Control Multi-Almacén:</strong> Al autenticarse, Orion configura el menú principal habilitando o deshabilitando módulos en tiempo real según el rol del usuario. Además, en la esquina superior derecha se visualiza y selecciona el almacén o centro de distribución activo en el que se está trabajando (ej. CEDI, BOD, M145, M105, MASB, MCHIA, RUMBOS, SIBE, UBATE, BUCA, SOA, TUNJA, ZIPA).
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Imagen_2.png', 'Selector Desplegable de Almacenes.png'], ['Menú Principal y Módulos', 'Selector Desplegable de Almacenes'], ['El menú principal actúa como el hub central del WMS. Muestra de manera limpia los accesos directos habilitados para el rol actual.<br><br><b>Estructura de Módulos:</b><br>• Dashboard de Métricas<br>• Recepción de Mercancía<br>• Gestión de Almacén<br>• Operaciones de Stock<br>• Alistamiento Logística Mascotas<br><br><b>Control Multi-Almacén (Esquina Superior Derecha):</b><br>• Permite alternar y definir el contexto operativo de inventario actual entre las diferentes sedes y almacenes disponibles.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Funcionalidad:</strong> Interfaz adaptativa que reduce errores operativos ocultando funciones no autorizadas y segmentando el inventario por almacén.</div>
+            <li>
+                <strong>Dinámica de Roles, Permisos y Control Multi-Almacén:</strong> Al autenticarse, Orion configura el menú principal habilitando o deshabilitando módulos en tiempo real según el rol del usuario. Además, en la esquina superior derecha se visualiza y selecciona el almacén activo (ej. CEDI, BOD, M145, M105, MASB, MCHIA, RUMBOS, SIBE, UBATE, BUCA, SOA, TUNJA, ZIPA).
+                <div class="detail-box">
+                    <strong>Estructura del Menú y Almacenes:</strong><br>
+                    • Dashboard de Métricas, Recepción de Mercancía, Gestión de Almacén, Operaciones de Stock y Alistamiento Logística Mascotas.<br>
+                    • <b>Control Multi-Almacén:</b> Permite alternar y definir el contexto operativo de inventario actual entre las diferentes sedes disponibles.<br>
+                    • <b>Funcionalidad:</b> Interfaz adaptativa que reduce errores ocultando funciones no autorizadas.
+                </div>
             </li>
         </ul>
 
         <div class="section-title">1.2 Menú Lateral, Ajustes y Productividad</div>
         <ul>
-            <li><strong>Menú Lateral de Gestión Operativa:</strong> Despliega el perfil completo del usuario, cambio de credenciales, configuración de impresoras térmicas y herramientas de soporte. Se habilitan y deshabilitan opciones dependiendo del rol del usuario. Incluye además las opciones avanzadas de configuración de periféricos: <strong>Tomar información de ficha técnica</strong> (para habilitar o deshabilitar la lectura de especificaciones del producto) y <strong>Escáner externo</strong> (para alternar el uso de pistolas físicas de códigos de barras).
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Imagen_3.png', 'DetalleConfiguracionEscaner.png'], ['Menú Lateral de Perfil', 'Opciones de Ficha Técnica y Escáner Externo'], ['Panel deslizante que centraliza las herramientas auxiliares del sistema.<br><br><b>Opciones de Configuración Avanzada:</b><br>• <b>Tomar información de ficha técnica:</b> Interruptor (SÍ/NO) que define si el sistema captura datos técnicos automáticos del ítem.<br>• <b>Escáner externo:</b> Permite alternar entre el uso de pistola lectora de códigos de barras externa (Activado/Desactivado) o cámara móvil.<br><br><b>Características Generales:</b><br>• Soporte para impresoras Zebra, Epson y Brother (ZPL/CPCL).<br>• Opciones de migración de datos y cierre de sesión seguro.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Valor Técnico:</strong> Conexión directa con hardware periférico y ajustes de sesión personalizados según los requerimientos del operario.</div>
+            <li>
+                <strong>Menú Lateral de Gestión Operativa:</strong> Despliega el perfil completo del usuario, cambio de credenciales, configuración de impresoras térmicas y periféricos (Zebra, Epson, Brother ZPL/CPCL). Incluye las opciones avanzadas: <i>Tomar información de ficha técnica</i> y <i>Escáner externo</i>.
+                <div class="detail-box">
+                    <strong>Configuración de Periféricos:</strong><br>
+                    • <b>Tomar información de ficha técnica:</b> Interruptor (SÍ/NO) para captura automática de datos técnicos del ítem.<br>
+                    • <b>Escáner externo:</b> Alterna entre pistola lectora de códigos física o cámara móvil.<br>
+                    • Valor técnico: Conexión directa con hardware y personalización según el operario.
+                </div>
             </li>
-            <li><strong>Dashboard de Métricas de Rendimiento:</strong> Panel superior en tiempo real que consolida la productividad individual del operario acumulada.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Imagen_4.png'], ['Dashboard de Métricas'], ['Indicadores numéricos que miden el rendimiento del trabajador frente a las metas diarias de alistamiento de la bodega.<br><br><b>KPIs Monitoreados:</b><br>• Unidades procesadas.<br>• Referencias procesadas.<br>• Pedidos procesados.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>KPIs:</strong> Permite que el usuario logueado tenga conocimiento de su productividad acumulada en determinado tiempo.</div>
+            <li>
+                <strong>Dashboard de Métricas de Rendimiento:</strong> Panel superior en tiempo real que consolida la productividad individual acumulada.
+                <div class="detail-box">
+                    <strong>KPIs Monitoreados:</strong> Unidades procesadas, referencias procesadas y pedidos procesados acumulados en tiempo real.
+                </div>
             </li>
         </ul>
 
         <div class="img-grid">
             <div class="img-box">
-                <img src="Imagen_1.png" alt="Login" onclick="openModal(['Imagen_1.png'], ['Pantalla de Login'], ['Autenticación corporativa segura de usuarios.'])">
+                <img src="Imagen_1.png" alt="Login">
                 <div class="img-caption">Pantalla de Login</div>
             </div>
             <div class="img-box">
-                <img src="Imagen_2.png" alt="Menú" onclick="openModal(['Imagen_2.png', 'Selector Desplegable de Almacenes.png'], ['Menú Principal', 'Control Multi-Almacén'], ['Hub central de navegación por roles y selector de almacenes.'])">
+                <img src="Imagen_2.png" alt="Menú">
                 <div class="img-caption">Menú Principal y Almacenes</div>
             </div>
             <div class="img-box">
-                <img src="Imagen_3.png" alt="Lateral" onclick="openModal(['Imagen_3.png', 'DetalleConfiguracionEscaner.png'], ['Menú Lateral de Perfil', 'Configuración de Ficha y Escáner'], ['Gestión de perfil y periféricos.'])">
+                <img src="Imagen_3.png" alt="Lateral">
                 <div class="img-caption">Menú Lateral y Periféricos</div>
             </div>
             <div class="img-box">
-                <img src="Imagen_4.png" alt="Dashboard" onclick="openModal(['Imagen_4.png'], ['Dashboard de Métricas'], ['Monitoreo de rendimiento operativo individual.'])">
+                <img src="Imagen_4.png" alt="Dashboard">
                 <div class="img-caption">Dashboard de Métricas</div>
             </div>
         </div>
@@ -359,39 +249,37 @@
         
         <div class="section-title">2.1 Flujo de Recepción (Arquitectura de 3 Pestañas)</div>
         <ul>
-            <li><strong>Nueva Auditoría (Pestaña Central):</strong> Formulario para registrar datos del documento de entrega del proveedor (NIT, Factura, ODC) y configuración física inicial (cajas, bultos, neveras de cadena de frío).
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Imagen_5.png'], ['Formulario de Nueva Auditoría'], ['Vista inicial donde el recepcionista establece el marco documental y logístico de la carga entrante.<br><br><b>Campos de Cabecera:</b><br>• NIT y Proveedor<br>• Número de Factura y ODC<br>• Comentarios iniciales de recepción (ej. Mercancía sin verificar)<br>• Conteo físico de cajas, neveras, bultos o galones y responsable de transporte.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Control Logístico:</strong> Permite clasificar la carga según requerimientos especiales de almacenamiento.</div>
+            <li>
+                <strong>Nueva Auditoría (Pestaña Central):</strong> Formulario para registrar datos del documento de entrega del proveedor (NIT, Factura, ODC) y configuración física inicial (cajas, bultos, neveras de cadena de frío).
+                <div class="detail-box">
+                    <strong>Campos de Cabecera:</strong> NIT, Proveedor, Número de Factura, ODC, Comentarios de recepción y Conteo físico de cajas, neveras, bultos o galones con responsable de transporte.
+                </div>
             </li>
-            <li><strong>Auditorías Abiertas (Pestaña Izquierda):</strong> Listado de recepciones pendientes con conexión transaccional directa a SAP Business One. Al hacer clic en cualquier ítem de este listado, el sistema redirige al <strong>Formulario de Producto</strong> para ingresar todos los datos detallados del artículo y de la factura, preparando la información para ser cargada al ERP SAP. Incorpora también el botón para sincronizar órdenes de compra en tiempo real.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Imagen_6.png', 'FormularioProducto.png', 'Imagen_7.png'], ['Auditorías Abiertas', 'Formulario de Producto', 'Actualización desde SAP'], ['Listado dinámico de recepciones activas. Al dar clic en un ítem, abre el <b>Formulario de Producto</b> donde se ingresan unidades, lotes, vencimientos, IVA y descuentos para preparar la información rumbo a SAP.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Sincronización ERP:</strong> Conexión bidireccional y captura detallada de ítems que evita discrepancias con el inventario de compras.</div>
+            <li>
+                <strong>Auditorías Abiertas (Pestaña Izquierda):</strong> Recepciones pendientes con conexión directa a SAP Business One. Al hacer clic se abre el <b>Formulario de Producto</b> para ingresar unidades, lotes, vencimientos, IVA y descuentos.
+                <div class="detail-box">
+                    <strong>Sincronización ERP:</strong> Conexión bidireccional y captura detallada que evita discrepancias con el inventario de compras.
+                </div>
             </li>
-            <li><strong>Auditorías por Cargar a SAP (Pestaña Derecha):</strong> Registro de recepciones que presentan preliminares debido a variaciones de precios, fechas cortas o discrepancias en las unidades recibidas. Cuenta con una caja de texto superior para **filtros rápidos** por número de factura o proveedor. Al hacer clic en cualquiera de los ítems de la lista, se despliega el formulario <strong>Ingreso por preliminar</strong>, permitiendo registrar el número de entrada de mercancía generado en SAP junto con los comentarios de ingreso para el cierre gerencial y legalización de entradas con incidencias.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Imagen_8.png', 'IngresoPorPreliminar.png'], ['Auditorías por Cargar a SAP', 'Ingreso por Preliminar'], ['Módulo de cierre gerencial para legalizar entradas con incidencias (variaciones de precios, fechas cortas o discrepancias de unidades).<br><br><b>Características:</b><br>• Caja de texto para filtros rápidos por factura o proveedor.<br>• Al hacer clic en un ítem, despliega el formulario para capturar el <b>Número de ingreso en SAP</b> y comentarios de legalización.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Trazabilidad y Cierre:</strong> Constancia escrita y digital de autorizaciones especiales ante mermas, diferencias o excepciones aprobadas por la administración del almacén.</div>
-            </li>
-        </ul>
-
-        <div class="section-title">2.2 Formulario Detallado de Producto y Control de Lotes</div>
-        <ul>
-            <li><strong>Búsqueda Inteligente y Validación:</strong> Localización de referencias por código de barras o descripción, control de unidades físicas, lotes de fábrica y fechas de vencimiento.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['FormularioProducto.png'], ['Formulario Detallado de Producto'], ['Interfaz de captura de datos por ítem. Valida cantidades frente a la ODC, controla lotes múltiples y productos bonificados.<br><br><b>Validaciones:</b><br>• Margen de vencimiento obligatorio.<br>• Control estricto de IVA y descuentos.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Garantía de Calidad:</strong> Impide el ingreso de productos vencidos y mitiga el registro con lotes incorrectos.</div>
+            <li>
+                <strong>Auditorías por Cargar a SAP (Pestaña Derecha):</strong> Registro de recepciones con preliminares (variaciones de precio, fechas cortas o discrepancias).
+                <div class="detail-box">
+                    <strong>Ingreso por Preliminar:</strong> Filtros rápidos por factura/proveedor y formulario para registrar el número de entrada generado en SAP junto a comentarios de legalización.
+                </div>
             </li>
         </ul>
 
         <div class="img-grid">
             <div class="img-box">
-                <img src="Imagen_5.png" alt="Nueva Auditoría" onclick="openModal(['Imagen_5.png'], ['Nueva Auditoría'], ['Registro inicial de datos de factura, proveedor y ODC.'])">
+                <img src="Imagen_5.png" alt="Nueva Auditoría">
                 <div class="img-caption">Nueva Auditoría</div>
             </div>
             <div class="img-box">
-                <img src="Imagen_6.png" alt="Abiertas" onclick="openModal(['Imagen_6.png', 'FormularioProducto.png', 'Imagen_7.png'], ['Auditorías Abiertas', 'Formulario de Producto', 'Sincronización SAP'], ['Control de recepciones y formulario de producto.'])">
+                <img src="Imagen_6.png" alt="Abiertas">
                 <div class="img-caption">Auditorías Abiertas y Producto</div>
             </div>
             <div class="img-box">
-                <img src="Imagen_8.png" alt="Por Cargar a SAP" onclick="openModal(['Imagen_8.png', 'IngresoPorPreliminar.png'], ['Auditorías por Cargar a SAP', 'Ingreso por Preliminar'], ['Cierre gerencial de preliminares e incidencias.'])">
+                <img src="Imagen_8.png" alt="Por Cargar a SAP">
                 <div class="img-caption">Auditorías por Cargar a SAP</div>
             </div>
         </div>
@@ -403,37 +291,40 @@
         
         <div class="section-title">3.1 Gestor de Almacén, Ubicaciones y Auditoría Histórica</div>
         <ul>
-            <li><strong>Inventario Virtual vs. Físico y Gestión de Movimientos:</strong> Permite consultar el estado actual de cualquier SKU, ver sus fotografías de referencia, stock disponible y asociarlo rápidamente a ubicaciones físicas y estibas. Facilita el control de diferencias entre el stock físico en almacenamiento y el virtual en SAP, calculando de forma directa el inventario frente a la cola de alistamiento para lograr revisiones más precisas y eficaces. Desde este mismo módulo se pueden realizar nuevos registros y ejecutar todos los movimientos requeridos en el almacén:
-                <br>• <strong>Actualización de Ubicación (Individual):</strong> Modificación puntual de la ubicación de una referencia, unidades, lote y fecha de vencimiento.
-                <br>• <strong>Reubicaciones Masivas:</strong> Opción avanzada para reubicar todas las referencias asociadas a una posición o estiba completa de manera rápida.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Inventario Virtual vs. Físico.png', 'actualizacionDeUbicacion.png', 'reubicaciones.png'], ['Administración de Ubicaciones', 'Actualización de Ubicación', 'Reubicaciones Masivas'], ['Gestión completa de stock, estibas y trazabilidad de posiciones.<br><br><b>Funcionalidades Clave:</b><br>• Consulta de stock físico vs virtual y cola de alistamiento.<br>• <b>Actualización de Ubicación:</b> Permite modificar unidades, lotes, fechas de vencimiento y coordenadas de forma individual.<br>• <b>Reubicaciones:</b> Traslado masivo de referencias completas de una estiba o posición hacia un nuevo destino logístico.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Control de Estibas y Movilidad:</strong> Mapeo exacto de las coordenadas del almacén con total flexibilidad para ajustes individuales y masivos.</div>
+            <li>
+                <strong>Inventario Virtual vs. Físico y Gestión de Movimientos:</strong> Consulta el estado de SKU, fotografías, stock disponible y estibas.
+                <div class="detail-box">
+                    <strong>Operaciones Disponibles:</strong><br>
+                    • <b>Actualización de Ubicación:</b> Modificación puntual de posición, unidades, lote y vencimiento de un SKU.<br>
+                    • <b>Reubicaciones Masivas:</b> Traslado completo de referencias de una estiba a un nuevo destino.
+                </div>
             </li>
-            <li><strong>Línea de Tiempo e Historial de Cambios:</strong> Auditoría forense integrada que registra cada modificación de inventario con hora, usuario, tipo de acción y valores. Incluye una <strong>caja de texto superior para filtros rápidos</strong> y, al hacer clic en cualquier ítem del historial, despliega una ventana emergente detallada con la trazabilidad completa (acción, responsable, fecha, valor anterior, valor insertado, valor nuevo, lote, fecha de vencimiento y ubicación).
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Historial de Cambios.png', 'detallesDeHistorial.png'], ['Historial de Cambios y Trazabilidad', 'Detalle de Auditoría'], ['Registro inmutable de movimientos que facilita el esclarecimiento de diferencias de inventario y responsabilidades.<br><br><b>Características:</b><br>• Filtro rápido superior para búsqueda de eventos.<br>• Al hacer clic en un registro, abre un modal detallado con la trazabilidad exacta de cambios (valores, lotes, vencimiento y ubicación).'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Transparencia Operativa:</strong> Evita pérdidas fantásticas al auditar cada gramo de movimiento en el almacén.</div>
+            <li>
+                <strong>Línea de Tiempo e Historial de Cambios:</strong> Auditoría forense inmutable con hora, usuario, tipo de acción y valores.
+                <div class="detail-box">
+                    <strong>Detalle de Trazabilidad:</strong> Filtro rápido e inspección exacta de cambios (valores anteriores/nuevos, lotes, vencimiento y ubicación) para esclarecer diferencias.
+                </div>
             </li>
         </ul>
 
         <div class="section-title">3.2 Control de Inventarios Parciales por Diferencia</div>
         <ul>
-            <li><strong>Priorización Automatizada de Conteos:</strong> Listado inteligente que agrupa los productos con mayores discrepancias entre el inventario físico y el virtual.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Parciales.png'], ['Módulo de Inventarios Parciales'], ['Herramienta clave para supervisores que permite enfocar los conteos cíclicos diarios en los artículos críticos que descuadran la contabilidad. Esto permite llevar un control exhaustivo del almacenamiento y el sistema, destinando al operario a realizar la revisión de los productos que no se tienen localizados y a actualizar la información en el sistema.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Eficiencia Cíclica:</strong> Optimiza el tiempo del equipo de inventarios atacando primero las brechas más grandes.</div>
+            <li>
+                <strong>Priorización Automatizada de Conteos:</strong> Listado inteligente que agrupa artículos con mayores brechas entre stock físico y virtual para optimizar los conteos cíclicos.
             </li>
         </ul>
 
         <div class="img-grid">
             <div class="img-box">
-                <img src="Inventario Virtual vs. Físico.png" alt="Almacén" onclick="openModal(['image_1b1b9d.png', 'image_1b1f85.png', 'image_1b753e.png'], ['Administración de Ubicaciones', 'Actualización de Ubicación', 'Reubicaciones Masivas'], ['Gestión de stock, ubicaciones, actualización de lotes y reubicaciones masivas.'])">
+                <img src="Inventario Virtual vs. Físico.png" alt="Almacén">
                 <div class="img-caption">Gestor y Ubicaciones</div>
             </div>
             <div class="img-box">
-                <img src="Historial de Cambios.png" alt="Historial" onclick="openModal(['Historial de Cambios.png', 'detallesDeHistorial.png'], ['Historial de Cambios y Trazabilidad', 'Detalle de Auditoría'], ['Auditoría forense y detalles de modificaciones por registro.'])">
+                <img src="Historial de Cambios.png" alt="Historial">
                 <div class="img-caption">Historial de Cambios</div>
             </div>
             <div class="img-box">
-                <img src="Parciales.png" alt="Parciales" onclick="openModal(['Parciales.png'], ['Inventarios Parciales'], ['Listado ordenado por discrepancia.'])">
+                <img src="Parciales.png" alt="Parciales">
                 <div class="img-caption">Inventarios Parciales</div>
             </div>
         </div>
@@ -445,51 +336,41 @@
         
         <div class="section-title">4.1 Picking Masivo Multi-Factura y Optimización de Rutas</div>
         <ul>
-            <li><strong>Alistamiento Simultáneo (Hasta 7 Documentos):</strong> Revolucionaria función de lotes de alistamiento que reduce drásticamente los desplazamientos inoficiosos de los operarios en piso consolidando hasta 7 documentos en una única ruta. Sin embargo, no es una obligación trabajar múltiples pedidos al tiempo, ya que el operario puede realizar la operación de manera individual por pedido (<a href="#" class="img-link" onclick="event.preventDefault(); openModal(['pickingIndividual.png', 'vistaDetallada.png', 'productosListos.png', 'criterioDeOrden.png'], ['Picking Individual (Vista Ampliada)', 'Vista Detallada', 'Productos Listos (Historial)', 'Criterio de Ordenamiento'], ['<b>Picking Individual y Masivo:</b> Permite consolidar hasta 7 documentos para reducir desplazamientos, o bien trabajar de forma individual por pedido según la preferencia del operario.<br><br><b>Control Visual y Vistas:</b><br>• <b>Switch de Vista:</b> Permite alternar entre la vista ampliada y la vista detallada.<br>• <b>Historial de Alistamiento:</b> Integra el registro de productos listos.<br>• <b>Criterios de Orden:</b> Metodología de organización de alistamiento.<br><br><b>Picking Voice (Switch Talk):</b> Herramienta de apoyo auditivo para que los operarios alternen métodos de alistamiento y reduzcan la fatiga visual.'])">🔍 Ver Guía y Detalles</a>).
-                
+            <li>
+                <strong>Alistamiento Simultáneo (Hasta 7 Documentos):</strong> Consolidación de pedidos para reducir desplazamientos o trabajo individual por pedido según preferencia.
                 <div class="detail-box">
-                    <strong>Detalles de Operación y Modos de Visualización:</strong>
-                    <br>• <b>Picking Individual y Masivo:</b> El sistema permite consolidar hasta 7 documentos para reducir trayectos, pero brinda flexibilidad para operar documento por documento si el trabajador lo prefiere.
-                    <br>• <b>Control Visual:</b> Incluye switch para intercalar entre la vista ampliada (priorizando la imagen del producto) y la vista detallada.
-                    <br>• <b>Historial y Metodología:</b> Integra consulta de productos listos y filtros de ordenamiento de ruta.
-                    <br>• <b>Picking Voice (Switch Talk):</b> Apoyo por voz para reducir fatiga visual en jornadas largas.
+                    <strong>Control Visual y Vistas:</strong> Switch entre vista ampliada y vista detallada, historial de productos listos, filtros de ordenamiento de ruta y apoyo auditivo <i>Picking Voice (Switch Talk)</i>.
                 </div>
             </li>
-            <li><strong>Control de Tiempos y Alertas de Retraso:</strong> Cronómetro con cuenta regresiva por pedido que vigila el ritmo del operario y escala a estado "retrasado".
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['pedidoRetrasado.png'], ['Control de Tiempos de Picking'], ['Mecanismo de responsabilidad operativa que previene demoras injustificadas y localiza cuellos de botella en tiempo real.<br><br>Permite a los líderes y supervisores tomar medidas de apoyo o correctivas para que el proceso no afecte al cliente final.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Supervisión Activa:</strong> Localiza cuellos de botella en tiempo real para tomar medidas correctivas antes de afectar el tiempo de entrega al cliente final.</div>
+            <li>
+                <strong>Control de Tiempos y Alertas de Retraso:</strong> Cronómetro con cuenta regresiva por pedido que vigila el ritmo y alerta sobre demoras injustificadas.
             </li>
         </ul>
 
         <div class="section-title">4.2 Validación Estricta de Lotes y Gestión de Novedades</div>
         <ul>
-            <li><strong>Flujo de Escaneo Inteligente, Menú de Ayuda y Gestión de Novedades:</strong> Al escanear correctamente el producto solicitado, el sistema despliega automáticamente el cuadro de información detallada, mostrando las unidades requeridas, el lote exacto y un listado filtrado que muestra únicamente las ubicaciones físicas que contienen dicho lote solicitado.
-                
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Novedades.png', 'Validación de Lote y Ubicación.png', 'novedadesPorClave.png'], ['Menú de Ayuda y Alistamiento', 'Detalle de Lote y Ubicaciones', 'Reporte de Novedades con Clave'], ['<b>Validación y Menú de Ayuda en Alistamiento:</b><br><br>• <b>Escaneo Correcto:</b> Despliega el cuadro de información con unidades solicitadas, lote y ubicaciones filtradas dinámicamente que contienen ese lote específico.<br><br>• <b>Menú de Ayuda (3 Opciones):</b><br>1. Búsqueda automática de la referencia en Google.<br>2. Reporte de producto en traslado (adelanta el pedido y lo completa en Packing tras la llegada).<br>3. Reporte de novedades protegido con clave única.<br><br>• <b>Notificación al Supervisor:</b> Envía alerta en tiempo real al panel web de Google Sheets con 4 tipos de novedades registradas.<br><br>• <b>Flujo Automatizado:</b> Al completar los ítems (lista en 0), migra en automático a Packing. Incluye switch de vista detallada priorizando la validación visual de la referencia.'])">🔍 Ver Guía y Detalles</a>
-
+            <li>
+                <strong>Flujo de Escaneo Inteligente y Menú de Ayuda:</strong> Muestra unidades solicitadas, lote exacto y filtra las posiciones que lo contienen.
                 <div class="detail-box">
-                    <strong>Funcionalidades Clave del Módulo de Alistamiento:</strong>
-                    <br>1. <b>Escaneo y Filtro Dinámico:</b> Muestra unidades solicitadas, lote y filtra solo las ubicaciones exactas con ese lote.
-                    <br>2. <b>Menú de Ayuda (3 Acciones):</b>
-                    <br>&nbsp;&nbsp;&nbsp;• <i>Buscar referencia en Google:</i> Consulta de ficha/imagen en la web.
-                    <br>&nbsp;&nbsp;&nbsp;• <i>Producto en traslado:</i> Permite continuar con el pedido sin detener el alistamiento; se completa en Packing al llegar.
-                    <br>&nbsp;&nbsp;&nbsp;• <i>Reportar Novedad:</i> Exige clave única para evitar errores, ofrece 4 tipos de novedades y notifica en tiempo real al supervisor vía <a href="https://script.google.com/macros/s/AKfycbwgatPvy2_Ama3BnNprT7aifa5bxOGMH0nsZDrME7aJofNDiM9sQ9WknSeHRm3bvjd11g/exec" target="_blank" style="color:var(--accent);">Panel Web</a>.
-                    <br>3. <b>Cierre Automático:</b> La lista disminuye hasta llegar a 0 y migra automáticamente a Packing para su empaquetado.
+                    <strong>Menú de Ayuda (3 Opciones):</strong><br>
+                    1. Búsqueda automática del producto en Google.<br>
+                    2. Reporte de producto en traslado (se completa en Packing).<br>
+                    3. Reporte de novedades protegido con clave única que notifica al supervisor en tiempo real vía Panel Web.
                 </div>
             </li>
         </ul>
 
         <div class="img-grid">
             <div class="img-box">
-                <img src="pickingIndividual.png" alt="Picking Individual" onclick="openModal(['pickingIndividual.png', 'vistaDetallada.png', 'productosListos.png', 'criterioDeOrden.png'], ['Picking Individual (Vista Ampliada)', 'Vista Detallada', 'Productos Listos (Historial)', 'Criterio de Ordenamiento'], ['Picking individual, control visual, vistas y soporte de voz.'])">
+                <img src="pickingIndividual.png" alt="Picking Individual">
                 <div class="img-caption">Picking Individual y Vistas</div>
             </div>
             <div class="img-box">
-                <img src="Novedades.png" alt="Validación y Ayuda" onclick="openModal(['Novedades.png', 'Validación de Lote y Ubicación.png', 'novedadesPorClave.png'], ['Menú de Ayuda y Alistamiento', 'Detalle de Lote y Ubicaciones', 'Reporte de Novedades con Clave'], ['Menú de ayuda, ubicación por lote y traslado.'])">
+                <img src="Novedades.png" alt="Validación y Ayuda">
                 <div class="img-caption">Menú de Ayuda y Lotes</div>
             </div>
             <div class="img-box">
-                <img src="IngresoClave.png" alt="Novedades" onclick="openModal(['Novedades.png'], ['Gestión de Novedades Operativas'], ['Control de incidencias con clave de administrador y panel web.'])">
+                <img src="IngresoClave.png" alt="Novedades">
                 <div class="img-caption">Gestión de Novedades</div>
             </div>
         </div>
@@ -499,59 +380,44 @@
     <div class="module-card">
         <h2>📦 Módulo 5: Productiva PACKING, Rotulado y Validación Final</h2>
         
-        <div class="section-title">5.1 Selección de Documento y Asignación de Mesa de Packing</div>
+        <div class="section-title">5.1 Selección de Documento y Asignación de Mesa</div>
         <ul>
-            <li><strong>Listado de Facturas Pendientes e Iniciación:</strong> Presenta la cola de pedidos completados en Picking que están listos para empaquetar. Al seleccionar una factura (ej. Factura No. 10455), la interfaz habilita el botón verde <strong>"INICIAR PACKING"</strong> para cambiar el estado del pedido y comenzar el proceso de embalaje.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['listaPacking.png', 'inicioPacking.png'], ['Facturas Pendientes de Packing', 'Iniciar Packing'], ['<b>Gestión de Cola de Empaquetado:</b><br>• Muestra el número de factura, datos del cliente, observaciones urgentes y vendedor.<br>• Al seleccionar un pedido, se activa la confirmación de inicio de packing para el operario.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Control de Flujo:</strong> Bloquea la duplicidad de empaque asegurando que cada orden sea tomada por una única estación de trabajo.</div>
-            </li>
-            
-            <li><strong>Escaneo y Asignación de Mesa de Trabajo:</strong> Antes de ingresar a la lista de ítems, el sistema exige escanear el código de barras o ingresar el identificador físico de la estación (ej. MESA 1, MESA 2, etc.).
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['seleccionMesa.png'], ['Escaneo de Mesa de Packing'], ['<b>Ubicación Operativa de Empaque:</b><br>• Asocia la factura a una mesa física específica dentro del área de logística.<br>• Facilita la trazabilidad física de los bultos en caso de auditorías en piso.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Trazabilidad de Piso:</strong> Registra en qué puesto físico exacto se empaquetó cada factura para un control estricto de auditoría.</div>
+            <li>
+                <strong>Cola de Empaquetado y Asignación de Mesa:</strong> Confirmación de inicio de packing y escaneo obligatorio de mesa física (ej. MESA 1) para evitar duplicidad de empaque.
             </li>
         </ul>
 
-        <div class="section-title">5.2 Validación Estricta de Lectura, Lotes y Confirmación de Empaque</div>
+        <div class="section-title">5.2 Lectura de Producto, Display Amplificado y Confirmación</div>
         <ul>
-            <li><strong>Lectura de Producto y Display Amplificado de Lote/Unidades:</strong> El operario visualiza la lista de referencias pendientes por empacar. Al realizar el escaneo del producto correcto, el sistema despliega un <i>fragment</i> de alto contraste que muestra en tamaño ampliado el <strong>Lote a empacar</strong> (ej. 9YNR) y las <strong>Unidades a empacar</strong>.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['listaPedidoPacking.png', 'ampliada.png'], ['Lista de Empaque', 'Fragment Ampliado de Lote y Unidades'], ['<b>Facilidad de Lectura y Auditoría Visual:</b><br>• Presentación gráfica de la referencia, indicando características especiales (ej. REFRIGERADO).<br>• Pop-up en fuente gigante que facilita la verificación rápida para el operario y la supervisión por cámaras de seguridad.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Auditoría por Cámaras:</strong> El tamaño gigante de la letra permite verificar con claridad desde las cámaras de seguridad de la bodega qué lote y cantidad se empacó exactamente en caso de reclamación.</div>
-            </li>
-            
-            <li><strong>Confirmación y Rectificación de Empaquetado:</strong> Posterior a la lectura del fragment, se abre la ventana emergente con la fotografía del producto, lote exacto, unidades solicitadas, campo para rectificación y los botones interactivos de acción: <strong>Confirmar empaquetado (+)</strong> o <strong>Cancelar empaquetado (X)</strong>.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['confirmacionPacking.png'], ['Confirmación de Empaquetado'], ['<b>Validación Transaccional de Empaque:</b><br>• <b>Botón (+) Verde:</b> Confirma el empaquetado de las unidades y descuenta de la lista pendiente.<br>• <b>Botón (X) Rojo:</b> Cancela la lectura si se detecta alguna anomalía física en el producto.<br>• Campo para rectificación de posición y código de barras.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Prevención de Errores:</strong> Exige la confirmación explícita antes de consolidar el producto en la caja de despacho.</div>
+            <li>
+                <strong>Display Gigante de Lote/Unidades:</strong> Pop-up en fuente ampliada que facilita la inspección visual directa y la verificación por cámaras de seguridad.
+                <div class="detail-box">
+                    <strong>Botones de Acción:</strong> Confirmación explícita con (+) Verde o Cancelación con (X) Rojo ante anomalías físicas.
+                </div>
             </li>
         </ul>
 
-        <div class="section-title">5.3 Generación de Rótulo, Previsualización de Impresión y Check de Verificación Final</div>
+        <div class="section-title">5.3 Rótulos de Remesa y Checklist Final de Despacho</div>
         <ul>
-            <li><strong>Datos de Destino y Generación de Rótulo para Remesa:</strong> Al finalizar la lista de ítems, el sistema muestra el formulario consolidado con los datos del destinatario, número de factura, cliente, dirección, teléfono, observaciones de la factura y cantidad de piezas/cajas. Permite enviar a imprimir el rótulo mediante el botón <strong>"Rótulo"</strong> o pasar al cierre con <strong>"Finalizar Pedido"</strong>.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['observacionesPacking.png', 'previsualizacionRotulo.png'], ['Formulario de Datos de Destino', 'Previsualización del Rótulo'], ['<b>Gestión de Remesas y Etiquetas:</b><br>• Visualización de alertas sobre observaciones de entrega.<br>• Previsualización del formato oficial del rótulo Silveragro (con marcas de frágil/delicado, destinatario, factura y número de cajas) listo para enviar a impresoras en red.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Eficiencia Térmica/Red:</strong> Permite enviar rótulos de remesa directamente a cualquier impresora configurada en la red local para acelerar la identificación de cajas.</div>
-            </li>
-            
-            <li><strong>Checklist de Validaciones Finales de Despacho:</strong> Como último filtro obligatorio antes de cerrar definitivamente la orden, el operario debe marcar el cumplimiento de 3 categorías críticas de calidad:
-                <br>• <b>Cadena de Frío:</b> Referencias resaltadas en factura y productos asegurados en refrigeración.
-                <br>• <b>Sellos y Firmas:</b> Presencia de sellos/firmas de auxiliares y lectura de observaciones especiales.
-                <br>• <b>Logística y Piezas:</b> Picking/Packing en MTS, bultos/cajas marcados con número de piezas y rótulos pegados, verificación del tipo de envío y sellado adecuado con cintas resistentes.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['validacionFinal.png'], ['Validación Final de Despacho'], ['<b>Lista de Chequeo Obligatoria:</b><br>• Garantiza la integridad del paquete, control de frío, rotulado e inspección documental antes de la salida física del vehículo de reparto.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Cero Descuadres:</strong> Ningún pedido sale del sistema hacia la zona de despacho sin haber completado el 100% de la lista de verificación de calidad.</div>
+            <li>
+                <strong>Generación de Rótulos e Impresión en Red:</strong> Previsualización de rótulos con alertas de fragilidad y envío a impresoras térmicas.
+                <div class="detail-box">
+                    <strong>Checklist Obligatorio de Calidad:</strong> Inspección de Cadena de Frío, Sellos/Firmas y Logística/Piezas antes del despacho del vehículo.
+                </div>
             </li>
         </ul>
 
         <div class="img-grid">
             <div class="img-box">
-                <img src="listaPacking.png" alt="Pendientes Packing" onclick="openModal(['listaPacking.png', 'inicioPacking.png', 'seleccionMesa.png'], ['Facturas Pendientes', 'Iniciar Packing', 'Mesa de Packing'], ['Selección de factura e ingreso del número de mesa de packing.'])">
+                <img src="listaPacking.png" alt="Pendientes Packing">
                 <div class="img-caption">Facturas y Mesa</div>
             </div>
             <div class="img-box">
-                <img src="ampliada.png" alt="Fragment Lote y Unidades" onclick="openModal(['listaPedidoPacking.png', 'ampliada.png', 'confirmacionPacking.png'], ['Lista de Empaque', 'Fragment Lote/Unidades', 'Confirmación de Empaque'], ['Lectura de producto, display gigante de lote y unidades, y confirmación.'])">
+                <img src="ampliada.png" alt="Fragment Lote y Unidades">
                 <div class="img-caption">Lote, Unidades y Empaque</div>
             </div>
             <div class="img-box">
-                <img src="validacionFinal.png" alt="Checklist Despacho" onclick="openModal(['observacionesPacking.png', 'previsualizacionRotulo.png', 'validacionFinal.png'], ['Datos de Destino', 'Previsualización Rótulo', 'Validación Final Despacho'], ['Datos de remesa, previsualización de rótulo e inspección final de calidad.'])">
+                <img src="validacionFinal.png" alt="Checklist Despacho">
                 <div class="img-caption">Rótulo y Checklist Final</div>
             </div>
         </div>
@@ -561,58 +427,34 @@
     <div class="module-card">
         <h2>📊 Módulo 6: Informes de Alistamiento, Trazabilidad y Cadena de Frío</h2>
         
-        <div class="section-title">6.1 Consola Global de Documentos y Menú de Acciones Rápidas</div>
+        <div class="section-title">6.1 Consola Global y Auditoría de Tiempos</div>
         <ul>
-            <li><strong>Vista Universal de Facturas:</strong> Este módulo consolida la totalidad de los documentos del sistema sin importar su estado operativo actual (pendientes, en picking, en packing o finalizados). Ofrece una caja de búsqueda superior por número de factura para localización rápida en tiempo real.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Consola Global de Facturas.png'], ['Consola Global de Facturas'], ['<b>Visibilidad Total de la bodega:</b><br>• Carga masiva de facturas registradas en la base de datos.<br>• Muestra número de documento, cliente, dirección, observaciones de entrega y referencias pendientes.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Supervisión Centralizada:</strong> Permite a líderes y auditores monitorear cualquier orden sin importar en qué etapa de la cadena logística se encuentre.</div>
+            <li>
+                <strong>Vista Universal y Tiempos de Operación:</strong> Monitoreo de órdenes y desglose cronológico exacto entre tiempos de Picking y Packing por usuario.
             </li>
-            
-            <li><strong>Menú Flotante de Gestión del Pedido:</strong> Al hacer clic sobre cualquier tarjeta de factura, el sistema despliega una ventana modal con tres opciones operativas clave: 
-                <br>• <b>GENERAR RÓTULO:</b> Permite reimprimir o enviar a red el rótulo de despacho para remesa.
-                <br>• <b>VER DETALLES:</b> Abre la auditoría técnica completa de la orden.
-                <br>• <b>CONFIGURAR CADENA DE FRÍO:</b> Abre la herramienta de cálculo de refrigeración.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Menú de Acciones Rápidas.png'], ['Menú de Acciones Rápidas'], ['<b>Opciones por Pedido:</b><br>• Menú emergente centralizado que facilita la reimpresión de etiquetas, inspección de métricas de tiempo y ajuste de parámetros térmicos sin salir de la lista.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Acceso Inmediato:</strong> Agiliza la atención de consultas sobre pedidos específicos y re-expedición de etiquetas.</div>
+            <li>
+                <strong>Trazabilidad Unitaria y Novedades Post-Entrega:</strong> Consulta ítem por ítem con registro de reclamos o inconsistencias post-entrega.
             </li>
         </ul>
 
-        <div class="section-title">6.2 Auditoría Forense de Operación: Tiempos, Métricas y Productos</div>
+        <div class="section-title">6.2 Calculadora Estándar de Cadena de Frío</div>
         <ul>
-            <li><strong>Pestaña 1: Detalles de Operación y Tiempos (Picking vs Packing):</strong> Presenta el desglose completo del pedido (Factura, Fecha, Total Referencias, Total Unidades, Cliente, Destino, Observaciones, Vendedor y Estado final). En la sección inferior detalla la auditoría de tiempos:
-                <br>• <b>Tiempos de Picking:</b> Usuario responsable, hora exacta de inicio, hora de fin y tiempo neto transcurrido.
-                <br>• <b>Tiempos de Packing:</b> Usuario responsable, mesa asignada (ej. MESA 1), hora de inicio y tiempo total de empaque.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Detalles de Operación y Tiempos.png'], ['Detalles de Operación y Tiempos'], ['<b>Métricas Forenses de Rendimiento:</b><br>• Mapeo cronológico exacto de la preparación del pedido.<br>• Identificación explícita de responsables por fase para deslinde de responsabilidades y cálculo de KPIs.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>KPIs de Productividad:</strong> Monitorea cuellos de botella individuales y tiempos muertos entre el fin de Picking y el inicio de Packing.</div>
-            </li>
-            
-            <li><strong>Pestaña 2: Detalle por Productos y Novedades Post-Entrega:</strong> Al conmutar al segundo botón superior (<strong>PRODUCTOS</strong>), el sistema lista todas las referencias contenidas en la orden con su código SKU, descripción, lote, fecha de vencimiento, hora exacta de alistamiento, usuario de picking, ubicación física, hora de packing y usuario de empaque.
-                <br><br><b>Gestión de Novedades Post-Entrega:</b> Al presionar cualquier referencia de este listado, se activa el mismo menú de novedades utilizado en Picking. Esto permite registrar reclamos, inconsistencias o novedades detectadas post-entrega para mantener la trazabilidad del caso y gestionar su solución técnica.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Detalle de Productos e Historial.png'], ['Detalle de Productos e Historial'], ['<b>Trazabilidad Ítem por Ítem:</b><br>• Consulta detallada del ciclo de vida de cada referencia dentro de la bodega.<br>• Habilita el reporte de novedades post-entrega con el mismo estándar de seguridad de Picking.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Trazabilidad Unitaria:</strong> Permite resolver disputas comerciales aclarando exactamente quién alistó, quién empacó y a qué hora se manipuló cada producto.</div>
-            </li>
-        </ul>
-
-        <div class="section-title">6.3 Calculadora Estándar de Cadena de Frío</div>
-        <ul>
-            <li><strong>Asistente Térmico de Embalaje por Destino:</strong> Al seleccionar la opción <i>"Configurar Cadena de Frío"</i>, se abre un <i>fragment</i> interactivo para la gestión de productos termolábiles. El operario ingresa la <strong>Ciudad de Destino</strong> (ej. YOPAL - CASANARE) y selecciona la <strong>Categoría de Nevera</strong> (ej. Mediana 10 Lt).
-                <br><br><b>Cálculo Automático de Geles:</b> El sistema calcula la temperatura promedio de tránsito hacia esa región geográfica y muestra la regla de empaque requerida (ej. <i>"Temperatura máxima: 31.35 °C, Mínimo requerido: 8 geles de 500g"</i>) para garantizar que el medicamento o biológico mantenga su rango térmico (2°C - 8°C) hasta el punto de entrega.
-                <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Configuración de Cadena de Frío.png'], ['Configuración de Cadena de Frío'], ['<b>Protección de Biológicos y Medicamentos:</b><br>• Algoritmo de embalaje basado en clima de destino y capacidad del empaque isotérmico.<br>• Exige confirmación mediante el botón &quot;FINALIZAR ALISTAMIENTO&quot; para certificar el empaque térmico seguro.'])">🔍 Ver Guía y Detalles</a>
-                <div class="detail-box"><strong>Cero Pérdidas de Frío:</strong> Elimina el criterio subjetivo del empacador estandarizando científicamente la cantidad de refrigerante necesaria según la ruta logística.</div>
+            <li>
+                <strong>Asistente Térmico de Embalaje:</strong> Cálculo automático de geles refrigerantes según temperatura de la ciudad de destino y capacidad de nevera para productos termolábiles (2 °C a 8 °C).
             </li>
         </ul>
 
         <div class="img-grid">
             <div class="img-box">
-                <img src="Consola Global de Facturas.png" alt="Consola Global" onclick="openModal(['Consola Global de Facturas.png', 'Menú de Acciones Rápidas.png'], ['Consola Global de Facturas', 'Menú de Acciones Rápidas'], ['Listado universal de facturas y menú emergente de acciones.'])">
+                <img src="Consola Global de Facturas.png" alt="Consola Global">
                 <div class="img-caption">Facturas y Acciones</div>
             </div>
             <div class="img-box">
-                <img src="Detalles de Operación y Tiempos.png" alt="Tiempos de Operación" onclick="openModal(['Detalles de Operación y Tiempos.png', 'Detalle de Productos e Historial.png'], ['Tiempos de Picking y Packing', 'Detalle de Productos'], ['Auditoría cronológica de tiempos por usuario y listado unitario de productos.'])">
+                <img src="Detalles de Operación y Tiempos.png" alt="Tiempos de Operación">
                 <div class="img-caption">Tiempos y Productos</div>
             </div>
             <div class="img-box">
-                <img src="Configuración de Cadena de Frío.png" alt="Cadena de Frío" onclick="openModal(['Configuración de Cadena de Frío.png'], ['Calculadora de Cadena de Frío'], ['Cálculo de geles refrigerantes por temperatura de ciudad de destino y nevera.'])">
+                <img src="Configuración de Cadena de Frío.png" alt="Cadena de Frío">
                 <div class="img-caption">Cadena de Frío</div>
             </div>
         </div>
@@ -688,82 +530,6 @@
         <p>ORION WMS - Documentación Operativa y Manual Técnico de Usuario | Desarrollado para Máxima Eficiencia Logística.</p>
     </footer>
 </div>
-
-<!-- Ventana Modal con Galería Interactiva de Miniaturas -->
-<div id="modal-lightbox" style="display: none;" onclick="closeModal()">
-    <div class="modal-container" onclick="event.stopPropagation()">
-        <div class="modal-left">
-            <div class="modal-main-img-container">
-                <img id="modal-img" src="" alt="Vista ampliada">
-            </div>
-            <div class="modal-thumbs" id="modal-thumbs-container"></div>
-        </div>
-        <div class="modal-right">
-            <div>
-                <h3 id="modal-title">Título de la Pantalla</h3>
-                <div id="modal-desc">Descripción detallada...</div>
-            </div>
-            <button class="modal-close-btn" onclick="closeModal()">Cerrar Vista</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    let currentImages = [];
-    let currentTitles = [];
-    let currentDesc = "";
-
-    function openModal(imageSrcArray, titleArray, descText) {
-        currentImages = imageSrcArray;
-        currentTitles = titleArray;
-        currentDesc = descText;
-
-        const modal = document.getElementById('modal-lightbox');
-        modal.style.display = 'flex';
-
-        setMainImage(0);
-
-        const thumbsContainer = document.getElementById('modal-thumbs-container');
-        thumbsContainer.innerHTML = "";
-
-        if (imageSrcArray.length > 1) {
-            thumbsContainer.style.display = "flex";
-            imageSrcArray.forEach((src, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = src;
-                thumb.className = `modal-thumb ${index === 0 ? 'active' : ''}`;
-                thumb.onclick = () => setMainImage(index);
-                thumbsContainer.appendChild(thumb);
-            });
-        } else {
-            thumbsContainer.style.display = "none";
-        }
-    }
-
-    function setMainImage(index) {
-        const modalImg = document.getElementById('modal-img');
-        const modalTitle = document.getElementById('modal-title');
-        const modalDesc = document.getElementById('modal-desc');
-
-        modalImg.src = currentImages[index];
-        modalTitle.innerText = currentTitles[index];
-        modalDesc.innerHTML = currentDesc;
-
-        const thumbs = document.querySelectorAll('.modal-thumb');
-        thumbs.forEach((thumb, i) => {
-            if (i === index) {
-                thumb.classList.add('active');
-            } else {
-                thumb.classList.remove('active');
-            }
-        });
-    }
-
-    function closeModal() {
-        const modal = document.getElementById('modal-lightbox');
-        modal.style.display = 'none';
-    }
-</script>
 
 </body>
 </html>
