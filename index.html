@@ -266,7 +266,7 @@
                 print-color-adjust: exact !important;
                 padding: 10px;
             }
-            .img-link, #modal-lightbox, button {
+            .img-link, #modal-lightbox, button, .no-print {
                 display: none !important;
             }
             .module-card {
@@ -279,6 +279,27 @@
 <body>
 
 <div class="container">
+    <!-- BOTÓN DE EXPORTACIÓN A PDF -->
+    <div class="no-print" style="text-align: right; margin-bottom: 15px;">
+        <button onclick="window.print()" style="
+            background: linear-gradient(135deg, var(--accent), #00b4d8);
+            color: var(--primary);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(100, 255, 218, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        " onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+            📥 Exportar Manual a PDF
+        </button>
+    </div>
+
     <header>
         <h1>📖 Manual Operativo y Técnico - ORION WMS</h1>
         <p>Sistema Integral de Gestión de Almacén, Recepción y Control Logístico Avanzado</p>
@@ -290,7 +311,7 @@
         
         <div class="section-title">1.1 Arquitectura de Autenticación y Control de Roles</div>
         <ul>
-            <li><strong>Inicio de Sesión Seguro:</strong> El sistema restringe estrictamente el acceso operativo mediante credenciales encriptadas (correo corporativo y contraseña). Ningún usuario no autorizado puede ejecutar transacciones en piso. 
+            <li><strong>Inicio de Sesión Seguro:</strong> El sistema restringe strictly el acceso operativo mediante credenciales encriptadas (correo corporativo y contraseña). Ningún usuario no autorizado puede ejecutar transacciones en piso. 
                 <a href="#" class="img-link" onclick="event.preventDefault(); openModal(['Imagen_1.png'], ['Pantalla de Inicio de Sesión'], ['El módulo de autenticación valida las credenciales contra la base de datos central. Implementa sesiones seguras y control de tokens para garantizar que el operario mantenga su trazabilidad en cada movimiento.<br><br><b>Puntos clave:</b><br>• Validación obligatoria de correo corporativo.<br>• Encriptación de claves de acceso.'])">🔍 Ver Guía y Detalles</a>
                 <div class="detail-box"><strong>Propósito:</strong> Evitar accesos indebidos y asegurar que cada auditoría o alistamiento quede firmado digitalmente por el responsable.</div>
             </li>
